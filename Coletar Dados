@@ -1,0 +1,23 @@
+// A primeira função a ser criada é reponsável por coletar o movimento e o click do usuário.
+// trackClickstream.js sem otimização
+const trackClickstream = () => {
+  const data = [];
+
+  // Envia as coordenadas X / Y, Timestamp e tipo de evento
+  const pushEventData = ({ pageX, pageY, type }) => {
+    data.push({
+      time: Date.now(),
+      x: pageX,
+      y: pageY,
+      type,
+    });
+  };
+
+  // Adiciona os eventos ao move e click (não otimizado)
+  document.addEventListener("mousemove", pushEventData);
+  document.addEventListener("click", pushEventData);
+
+  return data;
+};
+
+export default trackClickstream;
